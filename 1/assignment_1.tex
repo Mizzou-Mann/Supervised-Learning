@@ -1,0 +1,43 @@
+% assignment_1.tex
+% CS 8725 - Supervised Learning (Fall 2015)
+%     University of Missouri-Columbia
+%             Chanmann Lim
+%            September 2015
+
+\documentclass[a4paper]{article}
+
+\usepackage[margin=1 in]{geometry}
+\usepackage{amsmath}
+
+\everymath{\displaystyle}
+
+\begin{document}
+\title{CS 8725: Report for assignment 1}
+\author{Chanmann Lim}
+\date{September 1, 2015}
+\maketitle
+
+Let $\hat{\theta}$ be the estimation of the probability of the coin show up head $P(Head)$, and $\theta^*$ be the true value of $P(Head)$. If $P(|\hat{\theta} - \theta^*| > \epsilon) \le \delta$ is true then $\delta$ would be the upper bound of the failure probability where the error is falling within the error range $\epsilon$. \\
+
+According to Hoeffding's inequality
+
+\begin{displaymath}
+P(|\hat{\theta} - \theta^*| \ge \epsilon) \le 2e^{-2n\epsilon^2}
+\end{displaymath}
+
+Then
+
+\begin{align*}
+2e^{-2n\epsilon^2} &\le \delta \\
+ln(2) - 2n\epsilon^2 &\le ln(\delta) \\
+ln(2) - ln(\delta) &\le 2n\epsilon^2 \\
+ln(2/\delta) &\le 2n\epsilon^2 \\
+\frac{ln(2/\delta)}{2\epsilon^2} &\le n
+\end{align*}
+
+Therefore,
+
+\begin{displaymath}
+n \ge \frac{ln(2/\delta)}{2\epsilon^2}
+\end{displaymath}
+\end{document}
