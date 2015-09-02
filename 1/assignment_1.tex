@@ -17,15 +17,21 @@
 \date{September 1, 2015}
 \maketitle
 
-Let $\hat{\theta}$ be the estimation of the probability of the coin show up head $P(Head)$, and $\theta^*$ be the true value of $P(Head)$. If $P(|\hat{\theta} - \theta^*| > \epsilon) \le \delta$ is true then $\delta$ would be the upper bound of the failure probability where the error is falling within the error range $\epsilon$. \\
+Let $\hat{\theta}$ be the estimation of the probability of the coin show up head $P(Head)$, and $\theta^*$ be the true value of $P(Head)$. If there is a constraint on the error bound $\epsilon$ to guarantee that the accuracy of the estimation is larger than $1 - \delta$ where $\delta$ denotes the failure probability and from the theory of probability we understand that the accuracy is just the complement the probability of error. Then we obtain
 
-According to Hoeffding's inequality
+\begin{align}
+P(|\hat{\theta} - \theta^*| < \epsilon) &\ge 1 - \delta \\
+1 - P(|\hat{\theta} - \theta^*| \ge \epsilon) &\ge 1 - \delta \\
+P(|\hat{\theta} - \theta^*| \ge \epsilon) &\le \delta
+\end{align}
 
-\begin{displaymath}
+According to Hoeffding's inequality we have
+
+\begin{equation}
 P(|\hat{\theta} - \theta^*| \ge \epsilon) \le 2e^{-2n\epsilon^2}
-\end{displaymath}
+\end{equation}
 
-Then
+And in order to guarantee that $P(|\hat{\theta} - \theta^*| \ge \epsilon)$ is always less than or equal to $\delta$, the upper bound of the probability of error $2e^{-2n\epsilon^2}$ must be less than or equal to $\delta$.
 
 \begin{align*}
 2e^{-2n\epsilon^2} &\le \delta \\
