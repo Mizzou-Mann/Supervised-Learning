@@ -1,0 +1,27 @@
+% assignment_2.tex
+% CS 8725 - Supervised Learning (Fall 2015)
+%     University of Missouri-Columbia
+%             Chanmann Lim
+%            September 2015
+
+\documentclass[a4paper]{article}
+
+\usepackage[margin=1 in]{geometry}
+\usepackage{amsmath}
+\usepackage{float}
+
+\everymath{\displaystyle}
+
+\begin{document}
+\title{CS 8725: Report for assignment 2}
+\author{Chanmann Lim}
+\date{September 9, 2015}
+\maketitle
+
+\paragraph{1.} Parameters list \\
+	$$ P(Y) $$
+	$$ P(X_1|Y = y), \qquad y \in \{T, F\} $$
+	$$ P(X_i|Y = y) \sim N(\mu_i, \sigma_i^2), \qquad y \in \{T, F\}, \; 2 \leq i \leq d $$
+
+	Total number of parameters = $1 + 2 + 2 \times 2 \times (d-1) = 4d - 1 $.
+\end{document}
