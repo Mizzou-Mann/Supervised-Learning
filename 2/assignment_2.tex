@@ -47,7 +47,7 @@
 	\end{align}
 	Therefore, predict Alice and Bob go hiking if $P(Sunny|Hike) \times P(Windy|Hike) > P(Sunny|\neg Hike) \times P(Windy|\neg Hike)$ and else otherwise.
 	
-\paragraph{(b)} ~\\
+\paragraph{(b)} The joint probability of Alice and Bob go hiking and the weather is sunny and windy can be considered as the product of the likelihood of the weather given they go hiking $P(Sunny, Windy | Hike)$ and the prior probability of going hiking $P(Hike)$.\\
 	\begin{align}
 		P(Sunny, Windy, Hike) &= P(Sunny, Windy | Hike) \cdot P(Hike)\\
 			&= P(Sunny | Hike) \cdot P(Windy | Hike) \cdot P(Hike)\\
@@ -60,16 +60,10 @@
 			&= 0.7 \times 0.5 \times 0.5\\
 			&= 0.175
 	\end{align}
-	And the probability of error:
+	And the probability of prediction error in case of Alice and Bob go hiking when the weather is sunny and windy is simply the probability that the weather is sunny and windy and Alice and Bob isn't go hiking. 
 	\begin{align}
-		P_e &= 1 - P(Correct) \\
-			&= 1 - P(Y|Sunny, Windy) \\
-			&= 1 - \frac{P(Sunny, Windy, Y) \cdot P(Y)}{P(Sunny, Windy)}
+		P_e &= P(Sunny, Windy,\neg Hike) \\
+			&= 0.175
 	\end{align}
-	For the case when the weather is sunny and windy the error probability:
-	\begin{align}
-		P_e(Hike|Sunny, Windy) &= 1 - \frac{0.16}{0.16 + 0.175} \\
-			&= 1 - 0.48 \\
-			&= 0.52
-	\end{align}
+	
 \end{document}
