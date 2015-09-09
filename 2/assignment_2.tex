@@ -27,22 +27,25 @@
 	
 	$ P(X_i|Y) \sim N(\mu_{iY}, \sigma_{iY}^2), \qquad Y \in \{T, F\}, \; 2 \leq i \leq d $
 	
-	The total number of parameters = $1 + 2 + 4 \times (d-1) = 4d - 1 $.
+	The total number of parameters = $1 + 2 + 4 \times (d-1) = 4d - 1 $.	
 	\begin{align}
 		P(Y|X) &= \frac{P(X|Y) \cdot P(Y)}{P(X)} \\
 			&\propto P(X|Y) \cdot P(Y) \\
-			&= P(X_1|Y) \cdot \prod_{i=2}^d N(\mu_{iY}, \sigma_{iY}^2) \cdot P(Y)
-	\end{align} 
+			&= P(X_1|Y) \cdot \prod_{i=2}^d N(x_i; \mu_{iY}, \sigma_{iY}^2) \cdot P(Y)
+	\end{align}
+	Where, $N(x_i; \mu_{iY}, \sigma_{iY}^2) = \frac{1}{\sqrt{2\pi}\sigma_{iY}}e^{-\frac{(x_i-\mu_{iY})^2}{2\sigma_{iY}}}$
 
-\paragraph{2. (a)} Naive Bayes decision rule for \\
+\paragraph{2. (a)} Naive Bayes decision rule is the function that maximizes the posterior probability however the denominator of the posterior probability is merely the normalization term to satisfy the property of probability and it does not depend on $y$ thus it can be dropped.\\
 	\begin{align}
-		f_{NB}(Sunny, Windy) = \argmax_{Y} P(Sunny|Y) \cdot P(Windy|Y) \cdot P(Y)
+		f_{NB}(Sunny, Windy) = \argmax_{y} P(Sunny|y) \cdot P(Windy|y) \cdot P(y)
 	\end{align}
 	Where $Y \in \{Hike, \neg Hike\}$ and 
-	$$ P(Hike) = P(\neg Hike) = 0.5 $$
+	$$ P(Y = Hike) = P(Y = \neg Hike) = 0.5 $$
+	$P(y)$ can also be dropped.
 	\begin{align}
-		f_{NB}(Sunny, Windy) = \argmax_{Y} P(Sunny|Y) \cdot P(Windy|Y)
+		f_{NB}(Sunny, Windy) = \argmax_{y} P(Sunny|y) \cdot P(Windy|y)
 	\end{align}
+	Therefore, predict Alice and Bob go hiking if $P(Sunny|Hike) \times P(Windy|Hike) > P(Sunny|\neg Hike) \times P(Windy|\neg Hike)$ and else otherwise.
 	
 \paragraph{(b)} ~\\
 	\begin{align}
