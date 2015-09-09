@@ -23,14 +23,15 @@
 
 	$ P(Y) $
 	
-	$ P(X_1|Y = y), \qquad y \in \{T, F\} $
+	$ P(X_1|Y), \qquad Y \in \{T, F\} $
 	
-	$ P(X_i|Y = y) \sim N(\mu_{y_i}, \sigma_{y_i}^2), \qquad y \in \{T, F\}, \; 2 \leq i \leq d $
+	$ P(X_i|Y) \sim N(\mu_{iY}, \sigma_{iY}^2), \qquad Y \in \{T, F\}, \; 2 \leq i \leq d $
 	
 	The total number of parameters = $1 + 2 + 2 \times 2 \times (d-1) = 4d - 1 $.
 	\begin{align}
 		P(Y|X) &= \frac{P(X|Y) \cdot P(Y)}{P(X)} \\
-			&= \frac{P(X_1|Y) \cdot \prod_{i=2}^d N(\mu_{i}, \sigma_{i}^2) \cdot P(Y)}{P(X)}
+			&\propto P(X|Y) \cdot P(Y) \\
+			&= P(X_1|Y) \cdot \prod_{i=2}^d N(\mu_{iY}, \sigma_{iY}^2) \cdot P(Y)
 	\end{align} 
 
 \paragraph{2. (a)} ~\\
