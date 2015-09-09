@@ -66,8 +66,23 @@
 	
 	Therefore the probability that the weather is sunny and windy and Alice and Bob isn't go hiking $P(Sunny, Windy, \neg Hike)$ is in fact the probability of prediction error of $P(Hike|Sunny, Windy)$. 
 	\begin{align}
-		P_e &= P(Sunny, Windy,\neg Hike) \\
+		P_e(Hike|Sunny, Windy) &= P(Sunny, Windy,\neg Hike) \\
 			&= 0.175
 	\end{align}
-	
+\paragraph{(c)} From (b) we can derive the expect error rate of the prediction that Alice and Bob go hiking given various weather conditions by sum up the joint probability all possible conditions and not hiking.
+	\begin{align}
+		P_e(Hike) &= \sum_{\substack{
+			s \in \{T, F\}\\
+			w \in \{T, F\}}} P(Sunny=s, Windy=w, \neg Hike) \\
+			&= \sum_{\substack{
+			s \in \{T, F\}\\
+			w \in \{T, F\}}} P(Sunny=s|\neg Hike) \cdot P(Windy=w|\neg Hike) \cdot P(\neg Hike)\\
+			&= P(\neg Hike) \\
+			&= 0.5
+	\end{align}
+	Similarly,
+	\begin{align}
+		P_e(\neg Hike) &= P(Hike) \\
+			&= 0.5
+	\end{align}
 \end{document}
