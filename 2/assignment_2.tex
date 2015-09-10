@@ -35,17 +35,17 @@
 	\end{align}
 	Where, $N(x_i; \mu_{iY}, \sigma_{iY}^2) = \frac{1}{\sqrt{2\pi}\sigma_{iY}}e^{-\frac{(x_i-\mu_{iY})^2}{2\sigma_{iY}}}$
 
-\paragraph{2. (a)} Naive Bayes decision rule is the function that maximizes the posterior probability however the denominator of the posterior probability is merely the normalization term to satisfy the property of probability and it does not depend on $y$ thus it can be dropped.\\
+\paragraph{2. (a)} Naive Bayes decision rule, like Optimal Bayes decision rule, is the function that maximizes the posterior probability while assuming all features are independent given class. However the denominator of the posterior probability is merely the normalization term to satisfy the property of a probability and it does not depend on $y$ thus it can be dropped.\\
 	\begin{align}
 		f_{NB}(Sunny, Windy) = \argmax_{y} P(Sunny|y) \cdot P(Windy|y) \cdot P(y)
 	\end{align}
-	Where $Y \in \{Hike, \neg Hike\}$ and 
-	$$ P(Y = Hike) = P(Y = \neg Hike) = 0.5 $$
+	Where $y \in \{Hike, \neg Hike\}$ and 
+	$$ P(Hike) = P(\neg Hike) = 0.5 $$
 	$P(y)$ can also be dropped.
 	\begin{align}
 		f_{NB}(Sunny, Windy) = \argmax_{y} P(Sunny|y) \cdot P(Windy|y)
 	\end{align}
-	Therefore, predict Alice and Bob go hiking if $P(Sunny|Hike) \times P(Windy|Hike) > P(Sunny|\neg Hike) \times P(Windy|\neg Hike)$ and else otherwise.
+	Therefore, predicting Alice and Bob go hiking if $P(Sunny|Hike) \times P(Windy|Hike) > P(Sunny|\neg Hike) \times P(Windy|\neg Hike)$ and else otherwise.
 	
 \paragraph{(b)} The joint probability of Alice and Bob go hiking and the weather is sunny and windy can be considered as the product of the likelihood of the weather given they go hiking $P(Sunny, Windy | Hike)$ and the prior probability of going hiking $P(Hike)$.\\
 	\begin{align}
@@ -61,7 +61,7 @@
 			&= 0.175
 	\end{align}
 	
-	Using Naive Bayes decision rule, we will predict $\neg Hike$ when it's sunny and windy.\\
+	Using the above Naive Bayes decision rule, we will predict $\neg Hike$ when it's sunny and windy.\\
 	
 	The prediction of Alice and Bob go hiking when the weather is sunny and windy $P(Hike|Sunny, Windy)$ is equal to the probability that they actually go hiking and it is sunny and windy $P(Sunny, Windy, Hike)$ divided by the probability that it's sunny and windy regardless of hiking $P(Sunny, Windy)$.
 	$$ P(Hike|Sunny, Windy) = \frac{P(Sunny, Windy, Hike)}{P(Sunny, Windy)} $$
@@ -71,20 +71,20 @@
 		P_e(Hike|Sunny, Windy) &= P(Sunny, Windy,\neg Hike) \\
 			&= 0.175
 	\end{align}
-\paragraph{(c)} From (b) we can derive the expect error rate of the prediction that Alice and Bob go hiking given various weather conditions by sum up the joint probability all possible conditions and not hiking.
+\paragraph{(c)} From (b) we can derive the expected error rate by summing up the prediction errors in all cases. \\
+
+	\begin{tabular}{ | c | c | c | c | c | c |}
+		\hline
+    	Sunny & Windy & $P(Sunny, Windy|Hike)$ & $P(Sunny, Windy|\neg Hike)$ & Predict & $P_e$ \\
+		\hline
+		T & T & $0.8\times0.4=0.32$ & $0.7\times0.5=0.35$ & $\neg Hike$ & $0.32\times0.5$\\
+		T & F & $0.8\times0.6=0.48$ & $0.7\times0.5=0.35$ & $Hike$ & $0.35\times0.5$\\
+		F & T & $0.2\times0.4=0.08$ & $0.3\times0.5=0.15$ & $\neg Hike$ & $0.08\times0.5$\\
+		F & F & $0.2\times0.6=0.12$ & $0.3\times0.5=0.15$ & $\neg Hike$ & $0.12\times0.5$\\
+		\hline
+  	\end{tabular}
 	\begin{align}
-		P_e(Hike) &= \sum_{\substack{
-			s \in \{T, F\}\\
-			w \in \{T, F\}}} P(Sunny=s, Windy=w, \neg Hike) \\
-			&= \sum_{\substack{
-			s \in \{T, F\}\\
-			w \in \{T, F\}}} P(Sunny=s|\neg Hike) \cdot P(Windy=w|\neg Hike) \cdot P(\neg Hike)\\
-			&= P(\neg Hike) \\
-			&= 0.5
-	\end{align}
-	Similarly,
-	\begin{align}
-		P_e(\neg Hike) &= P(Hike) \\
-			&= 0.5
+		E &= 0.5 \times (0.32+0.35+0.08+0.12) \\
+			&= 0.435
 	\end{align}
 \end{document}
