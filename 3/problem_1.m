@@ -10,6 +10,13 @@ beta = (A'*A)\A'*y;
 A = [A x.^2];
 beta_2 = (A'*A)\A'*y;
 
+% Evaluation
+prediction = A*beta_2;
+expected_loss = (y-prediction)' * (y-prediction) / length(y);
+
+display(prediction);
+display(expected_loss);
+
 % Plot
 figure;
 scatter(x, y); hold on;
