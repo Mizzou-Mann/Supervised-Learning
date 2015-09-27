@@ -5,6 +5,7 @@ y = [52.21 53.12 54.48 55.84 57.2 58.57 59.93 61.29 63.11 64.47 66.28 68.1 69.92
 % Linear regression
 A = [ones(length(x), 1) x];
 Beta = (A'*A)\A'*y;
+display(Beta);
 
 % Evaluation
 prediction = A*Beta;
@@ -14,6 +15,7 @@ display(expected_loss_beta);
 % Polynomial regression
 A = [A x.^2];
 Beta_2 = (A'*A)\A'*y;
+display(Beta_2);
 
 % Evaluation
 prediction = A*Beta_2;
