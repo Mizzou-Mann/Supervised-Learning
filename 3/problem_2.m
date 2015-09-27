@@ -10,6 +10,7 @@ y = [zeros(length(setosa),1); ones(length(versicolor),1)];
 % Logistic regression gradient ascent
 % initialize weight = [-1, 1]
 W = 2*rand(d, 1)-1;
+display(W);
 % maximum iteration
 T = 100000;
 % learning rate
@@ -24,9 +25,9 @@ while true
     lw(t) = y'*X*W - sum( log(1+exp(X*W)) );
     if t > 1
         delta_lw = abs( (lw(t) - lw(t-1)) / lw(t-1) );
-        % convergence criterion = percentage change < 0.1%
+        % convergence criterion = percentage change < 0.03%
         % or the maximum iteration is reached
-        if delta_lw < 1e-3 || t == T
+        if delta_lw < 3e-4 || t == T
             break;
         end
     end
@@ -36,7 +37,6 @@ end
 % Evaluation
 classification = X*W > 0;
 accuracy = sum(classification == y) / length(y);
-
 display(accuracy);
 
 % Plot of conditional log likelihood
