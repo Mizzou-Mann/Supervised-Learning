@@ -4,19 +4,19 @@ y = [52.21 53.12 54.48 55.84 57.2 58.57 59.93 61.29 63.11 64.47 66.28 68.1 69.92
 
 % Linear regression
 A = [ones(length(x), 1) x];
-beta = (A'*A)\A'*y;
+Beta = (A'*A)\A'*y;
 
 % Evaluation
-prediction = A*beta;
+prediction = A*Beta;
 expected_loss_beta = (y-prediction)' * (y-prediction) / length(y);
 display(expected_loss_beta);
 
 % Polynomial regression
 A = [A x.^2];
-beta_2 = (A'*A)\A'*y;
+Beta_2 = (A'*A)\A'*y;
 
 % Evaluation
-prediction = A*beta_2;
+prediction = A*Beta_2;
 expected_loss_beta2 = (y-prediction)' * (y-prediction) / length(y);
 display(expected_loss_beta2);
 
@@ -24,8 +24,8 @@ display(expected_loss_beta2);
 figure;
 scatter(x, y); hold on;
 x_value = linspace(1.3, 2);
-plot(x_value, beta(1) + beta(2)*x_value, 'r');
-plot(x_value, beta_2(1) + beta_2(2)*x_value + beta_2(3)*x_value.^2, 'g');
+plot(x_value, Beta(1) + Beta(2)*x_value, 'r');
+plot(x_value, Beta_2(1) + Beta_2(2)*x_value + Beta_2(3)*x_value.^2, 'g');
 hold off;
 title('Plot of data and regression lines');
 xlabel('Height');

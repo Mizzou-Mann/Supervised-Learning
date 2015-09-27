@@ -18,20 +18,17 @@ alpha = 0.001;
 % conditional log likelihood
 lw = zeros(1, T);
 
-t = 1;
-while true
+for t=1:T
     prediction = exp(X*W) ./ (1+exp(X*W));
     W = W + alpha * X' * (y - prediction);
     lw(t) = y'*X*W - sum( log(1+exp(X*W)) );
     if t > 1
         delta_lw = abs( (lw(t) - lw(t-1)) / lw(t-1) );
         % convergence criterion = percentage change < 0.03%
-        % or the maximum iteration is reached
-        if delta_lw < 3e-4 || t == T
+        if delta_lw < 3e-4
             break;
         end
     end
-    t = t + 1;
 end
 
 % Evaluation

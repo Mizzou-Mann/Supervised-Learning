@@ -7,11 +7,15 @@
 \documentclass[a4paper]{article}
 
 \usepackage[margin=1 in]{geometry}
+\usepackage{listings}
 \usepackage{amsmath}
+\usepackage{graphicx}
 \usepackage{float}
+\usepackage{multirow}
 
 \everymath{\displaystyle}
 \DeclareMathOperator*{\argmax}{\arg\!\max}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
 
 \begin{document}
 \title{CS 8725: Report for assignment 3}
@@ -19,5 +23,12 @@
 \date{September 28, 2015}
 \maketitle
 
+\noindent
+	The Matlab code for all experiments is in the \textbf{Appendix} section. \\
 
+\newpage
+\subsection*{Appendix:}
+	\lstinputlisting[language=Matlab, title=\lstname, basicstyle=\footnotesize]{assignment_3.m}
+	\lstinputlisting[language=Matlab, title=\lstname, basicstyle=\footnotesize]{problem_1.m}
+	\lstinputlisting[language=Matlab, title=\lstname, basicstyle=\footnotesize]{problem_2.m}
 \end{document}
