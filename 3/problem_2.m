@@ -30,6 +30,7 @@ for t=1:T
         end
     end
 end
+display(W);
 
 % Evaluation
 classification = X*W > 0;
